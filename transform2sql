@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+filename=$1;
+names=`cat $filename`;
+
+counter=1;
+for name in $names; do
+	insert="INSERT INTO FirstNames VALUES("$counter",'"$name"',"
+	
+	case $name in
+		*"va"|*"na"|*"da"|*"ie"|*"ka"|*"ta"|*"la"|*"ia"|*"ta"|*"ga")
+			insert=$insert"'FEMALE'";;
+		*"av"|*"in"|*"k"|*"r"|*"m"|*"tr"|*"rt"|*"nt"|*"el"|*"an"|*ei|*ej)
+			insert=$insert"'MALE'";;
+		*"do"|*"jz"|*"on"|*"os"|*"nt"|*"us"|*"il"|*"to") 
+			insert=$insert"'MALE'";;
+		*)
+			insert=$insert"''"
+			
+			echo -e
+			echo -e $name" je m nebo f:" 
+			read -n 1 input
+			case $input in
+				f)			
+					insert=$insert"'FEMALE'";;
+				m)
+					insert=$insert"'MALE'";;
+			esac
+			;;
+	esac
+		
+	insert=$insert");"
+	
+	
+	
+	counter=$(($counter+1))
+	echo $insert >> names-result.sql;
+done
+
