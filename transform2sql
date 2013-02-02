@@ -9,15 +9,13 @@ for name in $names; do
 	insert="INSERT INTO FirstNames VALUES("$counter",'"$name"',"
 	
 	case $name in
-		*"va"|*"na"|*"da"|*"ie"|*"ka"|*"ta"|*"la"|*"ia"|*"ta"|*"ga")
+		*"va"|*"na"|*"da"|*"ie"|*"ka"|*"ta"|*"la"|*"ia"|*"ta"|*"ga"|*ra|*ma)
 			insert=$insert"'FEMALE'";;
 		*"av"|*"in"|*"k"|*"r"|*"m"|*"tr"|*"rt"|*"nt"|*"el"|*"an"|*ei|*ej)
 			insert=$insert"'MALE'";;
-		*"do"|*"jz"|*"on"|*"os"|*"nt"|*"us"|*"il"|*"to") 
+		*"do"|*"jz"|*"on"|*"os"|*"nt"|*"us"|*"il"|*"to"|*nd|*od) 
 			insert=$insert"'MALE'";;
 		*)
-			insert=$insert"''"
-			
 			echo -e
 			echo -e $name" je m nebo f:" 
 			read -n 1 input
